@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "prettier": "prettier --check .",
+    "check:build": "SKIP_SENTRY=true next build",
     "check": "next lint && SKIP_SENTRY=true next build && prettier --check ."
   },
   "dependencies": {
