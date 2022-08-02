@@ -5,7 +5,7 @@ on:
   # plan to use this action with forks, see the Limitations section
   pull_request_target:
     branches:
-      - develop
+      - main
 
 # Down scope as necessary via https://docs.github.com/en/actions/security-guides/automatic-token-authentication#modifying-the-permissions-for-the-github_token
 permissions:
