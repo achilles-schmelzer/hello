@@ -107,7 +107,7 @@ export default function MobileMenu({
           </MenuItem>
         </Link>
         <Link href={'/groups'} passHref>
-          <MenuItem style={{ pointerEvents: 'none' }}>
+          <MenuItem onClick={onClickClose}>
             <Image
               src={'/assets/images/groupLight.svg'}
               width={40}
@@ -115,7 +115,7 @@ export default function MobileMenu({
               alt="groups"
             />
             <MenuItemDescription>
-              <InactivePrimaryText>Groups Coming Soon</InactivePrimaryText>
+              <PrimaryText>Groups</PrimaryText>
             </MenuItemDescription>
           </MenuItem>
         </Link>
