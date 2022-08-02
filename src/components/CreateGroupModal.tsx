@@ -1,7 +1,9 @@
-import { FunctionComponent, ChangeEvent, FormEvent, useState } from 'react';
+import { FunctionComponent, ChangeEvent, useState } from 'react';
 import styled from 'styled-components';
 import Modal from 'react-modal';
 import Image from 'next/image';
+import { utils } from 'ethers';
+import { AddressInput } from './AddressInput';
 
 export interface CreateGroupModalProps {
   isOpen: boolean;
@@ -14,14 +16,13 @@ export const CreateGroupModal: FunctionComponent<CreateGroupModalProps> = ({
   onRequestClose,
   onCreateGroup,
 }) => {
-  const [inputValue, setInputValue] = useState<string>('');
   const [peerAddresses, setPeerAddresses] = useState<Set<string>>(new Set());
   const [defaultAlias, setDefaultAlias] = useState<string>('');
 
   const addPeerAddress = (peerAddress: string) => {
     setPeerAddresses((prev) => {
       const result = new Set(prev);
-      result.add(peerAddress);
+      result.add(utils.getAddress(peerAddress));
       return result;
     });
   };
@@ -38,7 +39,6 @@ export const CreateGroupModal: FunctionComponent<CreateGroupModalProps> = ({
     onRequestClose();
     setPeerAddresses(new Set());
     setDefaultAlias('');
-    setInputValue('');
   };
 
   return (
@@ -78,30 +78,11 @@ export const CreateGroupModal: FunctionComponent<CreateGroupModalProps> = ({
         />
       </ModalFormItem>
       <ModalFormTitle>ADD ADDRESSES</ModalFormTitle>
-      <ModalForm
-        onSubmit={(e: FormEvent<HTMLFormElement>) => {
-          e.preventDefault();
+      <AddressInput
+        onSubmit={(inputValue: string) => {
           inputValue.length > 0 && addPeerAddress(inputValue);
-          setInputValue('');
-        }}>
-        <ModalFormItem>
-          <AddAddressInput
-            // type="submit"
-            value={inputValue}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => {
-              setInputValue(e.target.value);
-            }}
-            placeholder="Enter an address..."
-            spellCheck={false}
-          />
-          <Image
-            src="/assets/images/plus-grey.svg"
-            alt="plus"
-            height={16}
-            width={16}
-          />
-        </ModalFormItem>
-      </ModalForm>
+        }}
+      />
       {peerAddresses.size > 0 && (
         <AddressesList>
           {Array.from(peerAddresses)
@@ -202,8 +183,6 @@ const ModalClose = styled.div`
   display: flex;
   margin-left: auto;
 `;
-
-const ModalForm = styled.form``;
 
 const ModalFormItem = styled.div`
   display: flex;

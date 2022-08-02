@@ -2,6 +2,7 @@ import { Client } from '@xmtp/xmtp-js';
 import { sendGroupMessage } from './sendGroupMessage';
 import { fromPeerAddresses, withDefaultAlias } from './Group';
 import { fromGroupAndPayload } from './GroupMessageContent';
+import { utils } from 'ethers';
 
 export const createGroup = async (
   client: Client,
@@ -10,7 +11,9 @@ export const createGroup = async (
   introText: string
 ) => {
   for (const peerAddress of peerAddresses) {
-    const peerIsOnNetwork = Boolean(await client.canMessage(peerAddress));
+    const peerIsOnNetwork = Boolean(
+      await client.canMessage(utils.getAddress(peerAddress))
+    );
     if (!peerIsOnNetwork) {
       throw new Error('one of the peers is not initialized');
     }
