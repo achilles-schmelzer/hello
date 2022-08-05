@@ -62,8 +62,6 @@ export default function Landing() {
         <TopLeftFlexRow>
           <Image height={27} width={29} src={PanelLogo.src} alt="logo"></Image>
           <TopLeftTitle>Relay</TopLeftTitle>
-          <From>from</From>
-          <Panel>Panel</Panel>
         </TopLeftFlexRow>
         <TopRightTextContent>Public Beta</TopRightTextContent>
       </Header>
@@ -129,28 +127,6 @@ const TopLeftTitle = styled.div`
   margin-left: 10px;
   display: flex;
   align-items: center;
-
-  &:after {
-    content: '';
-    height: 19px;
-    width: 1px;
-    display: inline-block;
-    background-color: #d9d9d9;
-    margin: 0rem 0.5rem;
-  }
-`;
-
-const From = styled.span`
-  color: #868686;
-  font-weight: 500;
-  font-size: 0.875rem;
-`;
-
-const Panel = styled.span`
-  color: #868686;
-  font-weight: 600;
-  font-size: 0.875rem;
-  margin-left: 0.25rem;
 `;
 
 const TopRightTextContent = styled.div`
