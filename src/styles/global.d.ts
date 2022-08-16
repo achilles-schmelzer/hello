@@ -27,6 +27,21 @@ interface Colors {
   error: string;
   success: string;
   warning: string;
+  textPrimary: string;
+  textSecondary: string;
+  textDisabled: string;
+  placeholder01: string;
+  placeholder02: string;
+  placeholder03: string;
+  placeholder04: string;
+  fillsBackground: string;
+  fillsOverlay: string;
+  fillsStroke: string;
+  fillsTextbox: string;
+  fillsIcon: string;
+  fillsGreen: string;
+  fillsRed: string;
+  brandPrimary: string;
 }
 export interface Theme {
   colors: Colors;
