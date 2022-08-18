@@ -70,6 +70,10 @@ const Container = styled.div<{ isRequest: boolean }>`
   border-bottom: 1px solid rgba(35, 25, 59, 0.45);
   cursor: pointer;
 
+  @media (max-width: 500px) {
+    padding: 22px 10px;
+  }
+
   & > div:first-child {
     display: flex;
     & > div:last-child {
@@ -110,6 +114,10 @@ const StyledTitle = styled(Text)`
   line-height: 19px;
   letter-spacing: -0.01em;
   margin-bottom: 5px;
+
+  @media (max-width: 475px) {
+    font-size: 14px;
+  }
 `;
 
 const StyledSubTitle = styled(Text)`
@@ -121,6 +129,11 @@ const StyledSubTitle = styled(Text)`
   line-height: 19px;
   letter-spacing: -0.01em;
   word-break: break-word;
+  padding-right: 15px;
+
+  @media (max-width: 475px) {
+    font-size: 14px;
+  }
 `;
 
 const StyledText = styled(Text)<{ isRequest: boolean }>`
@@ -133,6 +146,14 @@ const StyledText = styled(Text)<{ isRequest: boolean }>`
   margin-left: 6px;
   margin-bottom: ${({ isRequest }) => (isRequest ? '0' : '5px')};
   color: #252727;
+  text-align: start;
+  white-space: nowrap;
+
+  @media (max-width: 475px) {
+    width: 75px;
+    white-space: normal;
+    font-size: 12px;
+  }
 `;
 
 function previewMessage(message: string): string {
