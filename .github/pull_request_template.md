@@ -1,9 +1,11 @@
-## Issue link
+# Issue link
 
-_link to github issue_
+_Links to GitHub issues that this PR closes._
 
-## Description
+# Description
 
-_description of proposed changes_
+_A detailed description of each change in the changeset._
 
-## Additional Information
+# How to test
+
+_A detailed list of cases which reviewers should step through._
