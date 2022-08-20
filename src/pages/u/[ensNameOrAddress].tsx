@@ -218,7 +218,7 @@ const LensProfile = ({ address }: { address: string }): JSX.Element => {
     );
   } else {
     const defaultProfile = data.profiles.items.find(
-      (profile: any) => profile.isDefault
+      (profile: { isDefault: boolean }) => profile.isDefault
     );
     const profile = defaultProfile || data[0];
     return (
