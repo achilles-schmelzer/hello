@@ -12,6 +12,7 @@ import {
   useProfile,
 } from 'hooks';
 import { ethers } from 'ethers';
+import Link from 'next/link';
 
 interface WithName {
   name: string | null;
@@ -57,6 +58,9 @@ const LoadedPage = ({
         <Avatar address={address} />
         <HorizontalSingleSpacer />
         <FlexCol>
+          <Right>
+            <Link href={'/' + ensName || address}>Send a Message</Link>
+          </Right>
           <h1>{ensName || 'No ENS Name Found'}</h1>
           <VerticalHalfSpacer />
           <h2>{address}</h2>
@@ -168,6 +172,10 @@ const LoadedPage = ({
     </Content>
   );
 };
+
+const Right = styled.div`
+  margin-left: auto;
+`;
 
 const MaxWidth = styled.div`
   max-width: 20rem;
