@@ -2,13 +2,12 @@ import { useState, useEffect } from 'react';
 import { useEnsAvatar } from 'wagmi';
 import styled from 'styled-components';
 import Blockies from 'react-blockies';
-import LoadingSpinner from './LoadingSpinner';
+import LoadingSpinner from '../LoadingSpinner';
 
 interface AvatarProps {
-  address: string | undefined;
-  size: 'small' | 'medium' | 'large';
+  address: string;
 }
-export default function Avatar(props: AvatarProps) {
+export function Avatar(props: AvatarProps) {
   const {
     data: ensAvatar,
     isFetching,
@@ -27,7 +26,7 @@ export default function Avatar(props: AvatarProps) {
   if (!ensAvatar) {
     return (
       <Blockies
-        seed={props.address?.toLowerCase() || ''}
+        seed={props.address.toLowerCase() || ''}
         size={10}
         scale={4}
         className={'circle'}
@@ -39,7 +38,7 @@ export default function Avatar(props: AvatarProps) {
 }
 
 const AvatarImage = styled.img<{ size?: 'large' | 'small' | 'medium' }>`
-  border-radius: 50%;
-  width: ${(p) => (p.size === 'large' ? '60px' : '40px')};
-  height: ${(p) => (p.size === 'large' ? '60px' : '40px')};
+  border-radius: 8px;
+  width: 6rem;
+  height: 6rem;
 `;

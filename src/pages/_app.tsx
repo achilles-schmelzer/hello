@@ -10,6 +10,7 @@ import {
   createClient,
   defaultChains,
 } from 'wagmi';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
@@ -22,6 +23,12 @@ const chains = defaultChains;
 const defaultChain = chain.mainnet;
 
 const xmtpNetwork = isRelayProd ? 'production' : 'dev';
+
+const LENS_API_URL = 'https://api-mumbai.lens.dev/';
+const client = new ApolloClient({
+  uri: LENS_API_URL,
+  cache: new InMemoryCache(),
+});
 
 // Set up connectors
 const wagmi = createClient({
@@ -88,21 +95,23 @@ export default function App({ Component, pageProps }: AppProps) {
   }, []);
   return (
     <ThemeProvider theme={theme}>
-      <PlausibleProvider
-        enabled={Plausible.enabled()}
-        domain={Plausible.domain()}
-        trackLocalhost={Plausible.trackLocalhost()}>
-        <WagmiProvider client={wagmi}>
-          <XmtpContextProvider xmtpNetwork={xmtpNetwork}>
-            <RedirectProvider>
-              <>
-                <GlobalStyles />
-                <Component {...pageProps} />
-              </>
-            </RedirectProvider>
-          </XmtpContextProvider>
-        </WagmiProvider>
-      </PlausibleProvider>
+      <ApolloProvider client={client}>
+        <PlausibleProvider
+          enabled={Plausible.enabled()}
+          domain={Plausible.domain()}
+          trackLocalhost={Plausible.trackLocalhost()}>
+          <WagmiProvider client={wagmi}>
+            <XmtpContextProvider xmtpNetwork={xmtpNetwork}>
+              <RedirectProvider>
+                <>
+                  <GlobalStyles />
+                  <Component {...pageProps} />
+                </>
+              </RedirectProvider>
+            </XmtpContextProvider>
+          </WagmiProvider>
+        </PlausibleProvider>
+      </ApolloProvider>
     </ThemeProvider>
   );
 }

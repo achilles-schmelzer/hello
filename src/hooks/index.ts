@@ -4,6 +4,8 @@ export * from './useWindowSize';
 export * from './useIsMetaMask';
 export * from './useMetrics';
 export * from './useResponsiveUserId';
+export * from './alchemy';
+export * from './lens';
 
 import useActiveTab from './useActiveTab';
 import usePreviousVal from './usePreviousVal';
