@@ -8,3 +8,4 @@ export * from './ChatComponent';
 export * from './ChatBox';
 export * from './Buttons';
 export * from './ChatHeader';
+export * from './Layout';

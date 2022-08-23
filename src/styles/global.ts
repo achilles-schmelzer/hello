@@ -116,7 +116,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 body {
   background: white;
   line-height: 1;
-  overflow-y: hidden;
 }
 ol,
 ul {

@@ -24,7 +24,10 @@ const defaultChain = chain.mainnet;
 
 const xmtpNetwork = isRelayProd ? 'production' : 'dev';
 
-const LENS_API_URL = 'https://api-mumbai.lens.dev/';
+const LENS_API_URL = isRelayProd
+  ? 'https://api.lens.dev'
+  : 'https://api-mumbai.lens.dev/';
+
 const client = new ApolloClient({
   uri: LENS_API_URL,
   cache: new InMemoryCache(),

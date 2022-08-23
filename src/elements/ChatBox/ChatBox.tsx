@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import sendblack from '../icons/sendblack.png';
 import Image from 'next/image';
 
 export const ChatBox = () => {
@@ -7,7 +6,12 @@ export const ChatBox = () => {
     <Container>
       <Input type="text" placeholder="Write a Message..." />
       <ImageContainer>
-        <Image height={20} width={20} src={sendblack} alt="send message" />
+        <Image
+          height={20}
+          width={20}
+          src={'/public/assets/images/sendblack.png'}
+          alt="send message"
+        />
       </ImageContainer>
     </Container>
   );
